@@ -1,2 +1,2 @@
 # TitanCluster
-About Repositório Terraform para criação de estrutura Kubernets na AWS com Eks
+Repositório Terraform para criação de estrutura Kubernets na AWS com Eks
