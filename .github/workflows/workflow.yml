@@ -31,7 +31,7 @@ jobs:
           sudo apt update && sudo apt install terraform
 
       - name: Inicializar Terraform
-        run: terraform init -var="DB_USERNAME=${DB_USERNAME}" -var="DB_PASSWORD=${DB_PASSWORD}"
+        run: terraform init 
 
       - name: Formatar Terraform
         run: terraform fmt

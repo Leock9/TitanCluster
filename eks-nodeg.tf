@@ -1,5 +1,5 @@
 resource "aws_eks_node_group" "node-group" {
-  cluster_name    = aws_eks_cluster.eks-cluster.name
+  cluster_name    = aws_eks_cluster.burguer.name
   node_group_name = "NG-${var.projectName}"
   node_role_arn   = var.labRoleArn
   subnet_ids      = ["${var.subNetA}", "${var.subNetB}", "${var.subNetC}"]
