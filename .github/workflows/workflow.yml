@@ -39,5 +39,11 @@ jobs:
       - name: Validar Terraform
         run: terraform validate
         
+      - name: Planejar configuração do Terraform
+        run: terraform plan 
+
+      - name: Aplicar configuração do Terraform
+        run: terraform apply -auto-approve
+
       - name: Saída do estado do Terraform
         run: terraform output
