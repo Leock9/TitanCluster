@@ -1,6 +1,4 @@
 variable "labRoleArn" {
-  type = string
-  description = "ARN of the IAM role to be used by the EKS cluster" 
   default = "arn:aws:iam::668909604236:role/LabRole"
 }
 
@@ -13,14 +11,15 @@ variable "accessConfig" {
 }
 
 variable "subNetA" {
-  default = "subnet-0844aa8c0a516959f"
+  default = "subnet-0ec8945ee554af6c7"
 }
 
 variable "subNetB" {
-  default = "subnet-02ce3a5c8d7519f84"
+  default = "subnet-0b172a0dfb7b3163d"
 }
+
 variable "subNetC" {
-  default = "subnet-00c99ec92da357b42"
+  default = "subnet-09f700394e2d9e5f4"
 }
 variable "instanceType" {
   default = "t3a.medium"
