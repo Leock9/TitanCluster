@@ -10,7 +10,7 @@ resource "aws_api_gateway_rest_api" "api_gateway" {
 resource "aws_api_gateway_resource" "get_by_document" {
   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
   parent_id   = aws_api_gateway_rest_api.api_gateway.root_resource_id
-  path_part   = "client/GetByDocument"
+  path_part   = "GetByDocument"
 }
 
 resource "aws_api_gateway_method" "get_by_document" {
@@ -56,7 +56,7 @@ resource "aws_api_gateway_integration" "client" {
 resource "aws_api_gateway_resource" "get_by_category" {
   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
   parent_id   = aws_api_gateway_rest_api.api_gateway.root_resource_id
-  path_part   = "/itemMenu/GetByCategory"
+  path_part   = "GetByCategory"
 }
 
 resource "aws_api_gateway_method" "get_by_category" {
@@ -102,7 +102,7 @@ resource "aws_api_gateway_integration" "item_menu" {
 resource "aws_api_gateway_resource" "order_get_list" {
   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
   parent_id   = aws_api_gateway_rest_api.api_gateway.root_resource_id
-  path_part   = "/order/getlist"
+  path_part   = "getlist"
 }
 
 resource "aws_api_gateway_method" "order_get_list" {
@@ -125,7 +125,7 @@ resource "aws_api_gateway_integration" "order_get_list" {
 resource "aws_api_gateway_resource" "order_checkout" {
   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
   parent_id   = aws_api_gateway_rest_api.api_gateway.root_resource_id
-  path_part   = "/order/checkout"
+  path_part   = "checkout"
 }
 
 resource "aws_api_gateway_method" "order_checkout" {
@@ -148,7 +148,7 @@ resource "aws_api_gateway_integration" "order_checkout" {
 resource "aws_api_gateway_resource" "order_update_status" {
   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
   parent_id   = aws_api_gateway_rest_api.api_gateway.root_resource_id
-  path_part   = "/order/UpdateStatus"
+  path_part   = "UpdateStatus"
 }
 
 resource "aws_api_gateway_method" "order_update_status" {

@@ -1,5 +1,5 @@
 resource "aws_instance" "ec2" {
-  ami           = "ami-0c55b159cbfafe1f0"
+  ami           = "amzn-linux-2023-ami"
   instance_type = "t2.micro"
   subnet_id    = var.subNetA
   vpc_security_group_ids = [data.aws_security_group.sg.id]
