@@ -193,5 +193,5 @@ resource "aws_api_gateway_stage" "stage" {
 }
 
 output "url_get_by_document" {
-  value = "${aws_api_gateway_deployment.example.invoke_url}"
+  value = "${aws_api_gateway_deployment.deployment.invoke_url}"
 }

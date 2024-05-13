@@ -44,5 +44,5 @@ resource "aws_lb_listener" "listener" {
 }
 
 output "dns_loadbalancer" {
-  value = aws_alb.alb-cluster-fiap.dns_name
+  value = aws_alb.alb-cluster.dns_name
 }
