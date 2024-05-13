@@ -11,15 +11,15 @@ variable "accessConfig" {
 }
 
 variable "subNetA" {
-  default = "subnet-053335d6dee187dec"
+  default = "subnet-008bd35997d573e17"
 }
 
 variable "subNetB" {
-  default = "subnet-00ad306d9926054fa"
+  default = "subnet-0e1cde4617d144481"
 }
 
 variable "subNetC" {
-  default = "subnet-0e259e87d2ece4305"
+  default = "subnet-0914493de90ccc0d4"
 }
 variable "instanceType" {
   default = "t3a.medium"
