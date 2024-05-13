@@ -42,5 +42,9 @@ jobs:
       - name: Aplicar configuração do Terraform
         run: terraform apply -auto-approve
 
+      - name: Destruir recursos do Terraform (se houver erros)
+        if: failure()
+        run: terraform destroy -force
+
       - name: Saída do estado do Terraform
         run: terraform output
