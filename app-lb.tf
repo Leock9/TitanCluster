@@ -1,3 +1,10 @@
+resource "aws_instance" "ec2" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+  subnet_id     = ["${var.subNetA}", "${var.subNetB}", "${var.subNetC}"]
+  vpc_security_group_ids = [data.aws_security_group.sg.id]
+}
+
 resource "aws_alb" "alb-cluster" {
   depends_on         = [aws_eks_cluster.burguer]
   name               = "ALB-${var.projectName}"
@@ -33,6 +40,13 @@ resource "aws_lb_listener" "listener" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.target-group.arn
   }
+}
+
+resource "aws_lb_target_group_attachment" "attach" {
+    depends_on = [aws_instance.ec2]
+    target_group_arn = aws_lb_target_group.target-group.arn
+    target_id = aws_instance.ec2.id
+    port = 30007
 }
 
 output "dns_loadbalancer" {
