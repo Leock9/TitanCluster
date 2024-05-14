@@ -5,6 +5,10 @@ locals {
 resource "aws_api_gateway_rest_api" "api_gateway" {
     name = "GT-${var.projectName}"
     depends_on  = [aws_alb.alb-cluster]
+
+    endpoint_configuration {
+    types = ["REGIONAL"]
+  }
 }
 
 resource "aws_api_gateway_resource" "get_by_document" {
