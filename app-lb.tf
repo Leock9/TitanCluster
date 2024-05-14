@@ -1,7 +1,8 @@
 resource "aws_instance" "ec2" {
-  instance_type = "t2.micro"
-  subnet_id    = var.subNetA
-  vpc_security_group_ids = [data.aws_security_group.sg.id]
+  ami                     = "ami-0bb84b8ffd87024d8"
+  instance_type           = "t2.micro"
+  subnet_id               = var.subNetA
+  vpc_security_group_ids  = [data.aws_security_group.sg.id]
 }
 
 resource "aws_alb" "alb-cluster" {
