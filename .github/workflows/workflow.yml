@@ -44,7 +44,7 @@ jobs:
 
       - name: Destruir recursos do Terraform (se houver erros)
         if: failure()
-        run: terraform destroy -force
+        run: terraform destroy -auto-approve
 
       - name: Saída do estado do Terraform
         run: terraform output
