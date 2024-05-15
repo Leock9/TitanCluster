@@ -30,8 +30,31 @@ resource "aws_api_gateway_integration" "get_by_document" {
   http_method = aws_api_gateway_method.get_by_document.http_method
 
   integration_http_method = "ANY"
-  type                    = "HTTP"
+  type                    = "HTTP_PROXY"
   uri                     = "http://${local.load_balancer_dns}/client/GetByDocument"
+}
+
+resource "aws_api_gateway_method_response" "get_by_document_200" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+  resource_id = aws_api_gateway_resource.get_by_document.id
+  http_method = aws_api_gateway_method.get_by_document.http_method
+  status_code = "200"
+}
+
+resource "aws_api_gateway_integration_response" "get_by_document_200" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+  resource_id = aws_api_gateway_resource.get_by_document.id
+  http_method = aws_api_gateway_method.get_by_document.http_method
+  status_code = aws_api_gateway_method_response.get_by_document_200.status_code
+
+  response_templates = {
+    "application/json" = <<JSON
+#set($inputRoot = $input.path('$'))
+{
+    "message": "$inputRoot.message"
+}
+JSON
+  }
 }
 
 resource "aws_api_gateway_resource" "client" {
@@ -53,8 +76,31 @@ resource "aws_api_gateway_integration" "client" {
   http_method = aws_api_gateway_method.client.http_method
 
   integration_http_method = "ANY"
-  type                    = "HTTP"
+  type                    = "HTTP_PROXY"
   uri                     = "http://${local.load_balancer_dns}/client"
+}
+
+resource "aws_api_gateway_method_response" "client_200" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+  resource_id = aws_api_gateway_resource.client.id
+  http_method = aws_api_gateway_method.client.http_method
+  status_code = "200"
+}
+
+resource "aws_api_gateway_integration_response" "client_200" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+  resource_id = aws_api_gateway_resource.client.id
+  http_method = aws_api_gateway_method.client.http_method
+  status_code = aws_api_gateway_method_response.client_200.status_code
+
+  response_templates = {
+    "application/json" = <<JSON
+#set($inputRoot = $input.path('$'))
+{
+    "message": "$inputRoot.message"
+}
+JSON
+  }
 }
 
 resource "aws_api_gateway_resource" "get_by_category" {
@@ -76,8 +122,31 @@ resource "aws_api_gateway_integration" "get_by_category" {
   http_method = aws_api_gateway_method.get_by_category.http_method
 
   integration_http_method = "ANY"
-  type                    = "HTTP"
+  type                    = "HTTP_PROXY"
   uri                     = "http://${local.load_balancer_dns}/itemMenu/GetByCategory"
+}
+
+resource "aws_api_gateway_method_response" "get_by_category_200" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+  resource_id = aws_api_gateway_resource.get_by_category.id
+  http_method = aws_api_gateway_method.get_by_category.http_method
+  status_code = "200"
+}
+
+resource "aws_api_gateway_integration_response" "get_by_category_200" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+  resource_id = aws_api_gateway_resource.get_by_category.id
+  http_method = aws_api_gateway_method.get_by_category.http_method
+  status_code = aws_api_gateway_method_response.get_by_category_200.status_code
+
+  response_templates = {
+    "application/json" = <<JSON
+#set($inputRoot = $input.path('$'))
+{
+    "message": "$inputRoot.message"
+}
+JSON
+  }
 }
 
 resource "aws_api_gateway_resource" "item_menu" {
@@ -99,8 +168,31 @@ resource "aws_api_gateway_integration" "item_menu" {
   http_method = aws_api_gateway_method.item_menu.http_method
 
   integration_http_method = "ANY"
-  type                    = "HTTP"
+  type                    = "HTTP_PROXY"
   uri                     = "http://${local.load_balancer_dns}/itemMenu"
+}
+
+resource "aws_api_gateway_method_response" "item_menu_200" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+  resource_id = aws_api_gateway_resource.item_menu.id
+  http_method = aws_api_gateway_method.item_menu.http_method
+  status_code = "200"
+}
+
+resource "aws_api_gateway_integration_response" "item_menu_200" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+  resource_id = aws_api_gateway_resource.item_menu.id
+  http_method = aws_api_gateway_method.item_menu.http_method
+  status_code = aws_api_gateway_method_response.item_menu_200.status_code
+
+  response_templates = {
+    "application/json" = <<JSON
+#set($inputRoot = $input.path('$'))
+{
+    "message": "$inputRoot.message"
+}
+JSON
+  }
 }
 
 resource "aws_api_gateway_resource" "order_get_list" {
@@ -122,8 +214,31 @@ resource "aws_api_gateway_integration" "order_get_list" {
   http_method = aws_api_gateway_method.order_get_list.http_method
 
   integration_http_method = "ANY"
-  type                    = "HTTP"
+  type                    = "HTTP_PROXY"
   uri                     = "http://${local.load_balancer_dns}/order/getlist"
+}
+
+resource "aws_api_gateway_method_response" "order_get_list_200" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+  resource_id = aws_api_gateway_resource.order_get_list.id
+  http_method = aws_api_gateway_method.order_get_list.http_method
+  status_code = "200"
+}
+
+resource "aws_api_gateway_integration_response" "order_get_list_200" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+  resource_id = aws_api_gateway_resource.order_get_list.id
+  http_method = aws_api_gateway_method.order_get_list.http_method
+  status_code = aws_api_gateway_method_response.order_get_list_200.status_code
+
+  response_templates = {
+    "application/json" = <<JSON
+#set($inputRoot = $input.path('$'))
+{
+    "message": "$inputRoot.message"
+}
+JSON
+  }
 }
 
 resource "aws_api_gateway_resource" "order_checkout" {
@@ -145,8 +260,31 @@ resource "aws_api_gateway_integration" "order_checkout" {
   http_method = aws_api_gateway_method.order_checkout.http_method
 
   integration_http_method = "ANY"
-  type                    = "HTTP"
+  type                    = "HTTP_PROXY"
   uri                     = "http://${local.load_balancer_dns}/order/checkout"
+}
+
+resource "aws_api_gateway_method_response" "order_checkout_200" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+  resource_id = aws_api_gateway_resource.order_checkout.id
+  http_method = aws_api_gateway_method.order_checkout.http_method
+  status_code = "200"
+}
+
+resource "aws_api_gateway_integration_response" "order_checkout_200" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+  resource_id = aws_api_gateway_resource.order_checkout.id
+  http_method = aws_api_gateway_method.order_checkout.http_method
+  status_code = aws_api_gateway_method_response.order_checkout_200.status_code
+
+  response_templates = {
+    "application/json" = <<JSON
+#set($inputRoot = $input.path('$'))
+{
+    "message": "$inputRoot.message"
+}
+JSON
+  }
 }
 
 resource "aws_api_gateway_resource" "order_update_status" {
@@ -168,8 +306,31 @@ resource "aws_api_gateway_integration" "order_update_status" {
   http_method = aws_api_gateway_method.order_update_status.http_method
 
   integration_http_method = "ANY"
-  type                    = "HTTP"
+  type                    = "HTTP_PROXY"
   uri                     = "http://${local.load_balancer_dns}/order/UpdateStatus"
+}
+
+resource "aws_api_gateway_method_response" "order_update_status_200" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+  resource_id = aws_api_gateway_resource.order_update_status.id
+  http_method = aws_api_gateway_method.order_update_status.http_method
+  status_code = "200"
+}
+
+resource "aws_api_gateway_integration_response" "order_update_status_200" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+  resource_id = aws_api_gateway_resource.order_update_status.id
+  http_method = aws_api_gateway_method.order_update_status.http_method
+  status_code = aws_api_gateway_method_response.order_update_status_200.status_code
+
+  response_templates = {
+    "application/json" = <<JSON
+#set($inputRoot = $input.path('$'))
+{
+    "message": "$inputRoot.message"
+}
+JSON
+  }
 }
 
 resource "aws_api_gateway_deployment" "deployment" {
@@ -196,6 +357,6 @@ resource "aws_api_gateway_stage" "stage" {
   stage_name    = "stage"
 }
 
-output "url_get_by_document" {
+output "url_gateway" {
   value = "${aws_api_gateway_deployment.deployment.invoke_url}"
 }
