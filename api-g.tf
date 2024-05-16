@@ -3,10 +3,10 @@ locals {
 }
 
 resource "aws_api_gateway_rest_api" "api_gateway" {
-    name = "GT-${var.projectName}"
-    depends_on  = [aws_alb.alb-cluster]
+  name       = "GT-${var.projectName}"
+  depends_on = [aws_alb.alb-cluster]
 
-    endpoint_configuration {
+  endpoint_configuration {
     types = ["REGIONAL"]
   }
 }
@@ -346,7 +346,7 @@ resource "aws_api_gateway_deployment" "deployment" {
 
   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
 
-   lifecycle {
+  lifecycle {
     create_before_destroy = true
   }
 }
@@ -358,5 +358,5 @@ resource "aws_api_gateway_stage" "stage" {
 }
 
 output "url_gateway" {
-  value = "${aws_api_gateway_deployment.deployment.invoke_url}"
+  value = aws_api_gateway_deployment.deployment.invoke_url
 }
