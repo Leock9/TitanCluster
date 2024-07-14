@@ -32,3 +32,7 @@ variable "principalArn" {
 variable "policyArn" {
   default = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
 }
+
+variable "region" {
+  default = "us-east-1"
+}
