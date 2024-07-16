@@ -43,9 +43,10 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve
 
-      - name: Destruir recursos do Terraform (se houver erros)
+      - name: Saída do estado do Terraform
+        if: steps.validate.conclusion == 'success'
+        run: terraform output
+
+      - name: Destruir recursos em caso de falha
         if: failure()
         run: terraform destroy -auto-approve
-
-      - name: Saída do estado do Terraform
-        run: terraform output
